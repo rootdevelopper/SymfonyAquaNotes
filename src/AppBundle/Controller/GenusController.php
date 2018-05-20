@@ -10,9 +10,11 @@ namespace AppBundle\Controller;
 
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
-class GenusController
+class GenusController extends AbstractController
 {
     /**
      * @Route("/genus/{genusName}")
@@ -22,6 +24,19 @@ class GenusController
 
     public function showAction($genusName)
     {
-        return new Response('The genus: '. $genusName);
+        // Symfony v 3 changed - use Abstract Controller instead of Controller
+
+        $notes = [
+            'I saw an Octopus',
+            'Octopus offered Octupi',
+            'Raspberry Pi I said',
+            'Octor RPI'
+        ];
+
+        return $this->render('genus/show.html.twig', array(
+            'name' => $genusName,
+            'notes' => $notes
+        ));
+
     }
 }
