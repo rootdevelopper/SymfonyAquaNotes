@@ -15,11 +15,13 @@ use Symfony\Component\HttpFoundation\Response;
 class GenusController
 {
     /**
-     * @Route("/genus")
+     * @Route("/genus/{genusName}")
      */
 
-    public function showAction()
+//    wild card {genusName} should match the parameter name $genusName
+
+    public function showAction($genusName)
     {
-        return new Response('Under the sea');
+        return new Response('The genus: '. $genusName);
     }
 }
